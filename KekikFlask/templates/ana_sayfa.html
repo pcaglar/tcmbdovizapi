@@ -1,0 +1,118 @@
+{% extends "taban.html" %}
+{% block kekik_icerik %}
+
+
+{% from "formhelpers.html" import render_field %}
+
+<!-- <h3>{{ Doviz_Value }}</h3>-->
+
+
+
+
+<hr>
+
+<p>Bunlar da rastgele üretilen veriler;</p>
+<div class="container">
+    <div class='row' id="veri"></div>
+</div>
+
+ <div class="form-inline">
+    
+    <div class="form-group mx-sm-3 mb-2">
+    <label for="miktar">Döviz Hesapla</label>
+    </div>
+    <form method="post">
+    
+        
+    
+
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" name = "dovizmiktari" class="form-control mx-sm-3 mb-0" maxlength="64" placeholder="Ara...">
+        <select name = "doviztur" class="form-control" aria-label="Default select example">
+            <option selected>Doviz Seç</option>
+            {% for key in Doviz_Value.keys() %}
+            <a class="dropdown-item">{{key}}</a>
+            
+            <option  value="{{key}}">{{key}}</option>
+            {% endfor %}
+        </select>
+        
+        
+        <select name = "alsattur" class="form-control mx-sm-3 mb-0" aria-label="Default select example">
+            <option selected>Alım Satım Türü</option>
+            <a class="dropdown-item"></a>
+            <option  value="ForexBuying">ForexBuying</option>
+            <option  value="BanknoteBuying">BanknoteBuying</option>
+            <option  value="ForexSelling">ForexSelling</option>
+            <option  value="BanknoteSelling">BanknoteSelling</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary mx-sm-3 mb-0">Hesapla</button>
+
+    </div>
+
+    
+</form>
+
+    <div class="form-group mx-sm-3 mb-2">
+        <h2><span class="badge badge-success">{{toplam}} TL</span>
+    </div>
+    
+
+  
+    
+    
+
+  </div>  
+
+  
+   
+  
+</div>
+
+
+
+<table class="table table-sm table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">URL</th>
+        <th scope="col">Açıklama</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="bg-primary" scope="row">1</th>
+        <td class="bg-primary">http://127.0.0.1:5000/api/doviz</td>
+        <td class="bg-primary">GET -> Güncel kur bilgilerinin tamamını verir.<br>
+
+            POST -> JSON ile tarih bilgisi gönderirseniz "gun.ay.yil" formatında "01.04.2020" ilgili günün tüm kurlarını verir. Hangi kuru istediğinizi eklerseniz sadece o kurun bilgileri gelir.</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>http://127.0.0.1:5000/api/doviz/(ParaBirimi)</td>
+        <td>GET -> Seçilen Kur türünün tüm bilgilerini verir. http://127.0.0.1:5000/api/doviz/usd <br>
+
+            POST -> Seçilen Kur türünün arşiv verisini almak için  gerekli data{"tarih":"01.04.2020"}  </td>
+      </tr>
+      <tr>
+        <th class="bg-primary" scope="row">3</th>
+        <td class="bg-primary">http://127.0.0.1:5000/api/doviz/yil/ay/gun</td>
+        <td class="bg-primary">GET -> Arşivden ilgili günün tüm kur bilgilerini verir.</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>http://127.0.0.1:5000/api/doviz/yil/ay/gun/(ParaBirimi)</td>
+        <td>GET -> Arşivden ilgili günün seçilen kur bilgilerini verir.</td>
+      </tr>
+      <tr>
+        <th  class="bg-primary" scope="row">4</th>
+        <td class="bg-primary">http://127.0.0.1:5000/api/doviz/hesap/(ParaBirimi)/(İşlemTercihi)/(ParaMiktarı)</td>
+        <td class="bg-primary">GET -> Son yayınlanan kur oranından hesaplama yapar. <br>
+            http://127.0.0.1:5000/api/doviz/hesap/USD/ForexBuying/3
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
