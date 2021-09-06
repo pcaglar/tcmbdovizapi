@@ -8,4 +8,4 @@ Arşivdeki günün tarihinde hata dönmesi düzeltilmiştir.<br>
 Hesaplama apisi eklenmiştir.<br>
 Anasayfaya hesaplama modülü eklenmiştir.<br>
 
-Bilgisiyle ve projeleriyle desteğini esirgemeye <a href="https://github.com/keyiflerolsun">keyiflerolsun</a> ' a teşekkürler :)
+Bilgisiyle ve projeleriyle desteğini esirgemeyen <a href="https://github.com/keyiflerolsun">keyiflerolsun</a> ' a teşekkürler :)
